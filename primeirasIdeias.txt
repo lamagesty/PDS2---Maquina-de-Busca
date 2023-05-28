@@ -1,0 +1,22 @@
+-> Criar classe do índice invertido:
+    Esta classe irá armazenar a palavra e o conjunto dos documentos em que ela aparece.
+    (No enunciado é também mostrado o número de vezes em que ela aparece em determinado documento,
+    aí fiquei na dúvida se devemos ter este dado também).
+    As palavras a serem consultadas devem ser lidas de alguma entrada, normalizadas de acordo com as 
+    regras do enunciado e armazenadas num índice invertido. Acho que a gente pode seguir esses passos
+    para fazer isso: a palavra é lida, normalizada, buscada nos documentos e, com isso, é feito o armaze-
+    namento no índice invertido. Primeiro lemos um documento inteiro, contabilizamos a recorrência da palavra
+    neste doc. em específico e, então, colocamos ela no map. Depois vamos pro próximo documento e assim 
+    por diante. 
+    
+    Para a classe do índice invertido, vamos ter que ter o método 'inserir'. Talvez a normalização também possa
+    ser um método. 
+
+
+-> Subsistema de recuperação:
+    Essa parte será feita depois que o método acima já estiver implementado. Se uma consulta é feita, o método
+    do índice invertido é acionado. Depois será feito o retorno, ou seja, o código terá que dizer quais documen-
+    tos possuem as palavras pesquisadas, ordenando-os pelo número de recorrência relacionado a consulta. Isto é,
+    o primeiro documento a ser retornado será aquele que possui mais recorrência da(s) palavra(s) pesquisada(s).
+    Para isso, acho que teremos que fazer um iterator no map ou algum tipo de ordenação pela função sort. Talvez
+    podemos criar um método de ordenação na classe do índice invertido. 
