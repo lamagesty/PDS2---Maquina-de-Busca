@@ -19,6 +19,4 @@
     tos possuem as palavras pesquisadas, ordenando-os pelo número de recorrência relacionado a consulta. Isto é,
     o primeiro documento a ser retornado será aquele que possui mais recorrência da(s) palavra(s) pesquisada(s).
     Para isso, acho que teremos que fazer um iterator no map ou algum tipo de ordenação pela função sort. Talvez
-    podemos criar um método de ordenação na classe do índice invertido. 
-
-asdjasidasdhsd
+    podemos criar um método de ordenação na classe do índice invertido.
