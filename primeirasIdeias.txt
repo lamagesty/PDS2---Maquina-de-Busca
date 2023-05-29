@@ -20,3 +20,8 @@
     o primeiro documento a ser retornado será aquele que possui mais recorrência da(s) palavra(s) pesquisada(s).
     Para isso, acho que teremos que fazer um iterator no map ou algum tipo de ordenação pela função sort. Talvez
     podemos criar um método de ordenação na classe do índice invertido.
+
+Dúvidas:
+1 - Normalização (fazer um tanto de if... ou tem algum jeito mais fácil)
+2 - Como ler os todos documentos de uma pasta sem saber o nome deles
+3 - Criar um método dentro de indice_invertido para ler os arquivos? Ou fazer a leitura em uma função do main
