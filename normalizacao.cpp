@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -40,9 +41,23 @@ string normalizacao(string s){
 }
 
 int main(){
-
-    string palavra;
-    cin >> palavra;
-    cout << normalizacao(palavra) << endl;
+    
+    string consulta;
+    string palavra = "";
+    getline(cin, consulta);
+    string::iterator letra = consulta.begin();
+    while(letra != consulta.end()){
+        if((*letra) != ' '){
+            palavra += (*letra);
+            if((*letra) == consulta.back()){
+            cout << normalizacao(palavra) << endl;
+            }
+        }
+        else{
+            cout << normalizacao(palavra) << endl;
+            palavra = "";
+        }
+        letra++;
+    }
     return 0;
 }
