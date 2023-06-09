@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 
+#include "indice_invertido.h"
+
 using namespace std;
 
 bool find(vector<char> v, char c){
@@ -38,26 +40,19 @@ string normalizacao(string s){
     }
 
     return result;
+    
 }
 
 int main(){
-    
     string consulta;
-    string palavra = "";
-    getline(cin, consulta);
-    string::iterator letra = consulta.begin();
-    while(letra != consulta.end()){
-        if((*letra) != ' '){
-            palavra += (*letra);
-            if((*letra) == consulta.back()){
-            cout << normalizacao(palavra) << endl;
-            }
-        }
-        else{
-            cout << normalizacao(palavra) << endl;
-            palavra = "";
-        }
-        letra++;
+
+    while(cin >> consulta){
+        string nome_documento;
+        indice_invertido Repositorio;
+        Repositorio.Inserir(normalizacao(consulta), nome_documento);
+
+        cout << normalizacao(consulta) << endl;
     }
+
     return 0;
 }
