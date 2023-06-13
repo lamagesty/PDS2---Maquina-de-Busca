@@ -8,10 +8,20 @@ using namespace std;
 
 class indice_invertido{
     public:
+        void Preencher();
+
         void Inserir(string palavra, string documento);
 
+        void Procurar(string palavra);
+
+        void Excluir();
+
+        void Imprimir();
+
+        string Normalizar(string palavra);
+
     private:
-        map<string, map<string, int>> indiceInvertido;
+        map<string, map<string, int>> indiceInvertido_;
 };
 
 #endif
