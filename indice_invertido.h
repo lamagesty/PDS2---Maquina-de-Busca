@@ -12,7 +12,7 @@ class indice_invertido{
 
         void Inserir(string palavra, string documento);
 
-        map<string, map<int , int>> Procurar(string palavra);
+       void Procurar(string palavra);
 
         set<string> documentos(string palavra);
 
@@ -22,12 +22,18 @@ class indice_invertido{
 
         void Excluir();
 
+        void ExcluirDoc();
+
         void Imprimir();
+
+        void ImprimirDoc(int contador_palavras);
 
         string Normalizar(string palavra);
 
     private:
         map<string, map<string, int>> indiceInvertido_;
+
+        map<string, pair<int, int>> documentos_;
 };
 
 #endif

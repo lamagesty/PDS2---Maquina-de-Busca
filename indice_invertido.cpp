@@ -49,34 +49,22 @@ bool indice_invertido::Pertence(string palavra){
     }
 }
 
-map<string, map<int , int>> indice_invertido::Procurar(string palavra){
-    map<string, map<int , int>> busca_documento;
+void indice_invertido::Procurar(string palavra){
     
     if(Pertence(palavra)){
         for (auto it = indiceInvertido_.begin(); it != indiceInvertido_.end(); it++) {
             if(it->first == palavra){
                 for (auto innerIt = it->second.begin(); innerIt != it->second.end(); innerIt++) {
 
-                    busca_documento[innerIt->first][innerIt->second]++;
-                    
+                    documentos_[innerIt->first].first += innerIt->second;
+                    documentos_[innerIt->first].second += 1;
                 }
             }
         } 
 
     } else{
-        cout << "A palavra" << palavra << "não pertence a nenhum documento";
-    }
-
-    
-     for (auto it = busca_documento.begin(); it != busca_documento.end(); it++) {
-         cout << it->first << " ";
-
-         //Loop no mapa interno
-         for (auto innerIt = it->second.begin(); innerIt != it->second.end(); innerIt++) {
-            cout << innerIt->first << " " << innerIt->second << endl;
-        }
-    }
-    return busca_documento;
+        cout << "A palavra " << palavra << " não pertence a nenhum documento" << endl;
+    } 
 }
 
 
@@ -121,8 +109,24 @@ void indice_invertido::Imprimir(){
     }
 }
 
+void indice_invertido::ImprimirDoc(int contador_palavras){
+    for (auto it = documentos_.begin(); it != documentos_.end(); it++) {
+        if(contador_palavras == it->second.second){
+            cout << it->first << " ";
+            cout << "Valor (primeiro elemento do pair): " << it->second.first;
+            cout << " Valor (segundo elemento do pair): " << it->second.second << endl;
+        } else{
+
+        }
+    }
+}
+
 void indice_invertido::Excluir(){
     indiceInvertido_.clear();
+}
+
+void indice_invertido::ExcluirDoc(){
+    documentos_.clear();
 }
 
 bool find(vector<char> v, char c){
