@@ -9,7 +9,7 @@
 
 using namespace std;
 
-//teste 
+
 void indice_invertido::Inserir(string palavra, string documento){
     indiceInvertido_[palavra][documento]++;
 }
@@ -24,7 +24,6 @@ void indice_invertido::Preencher(){
         if((rd->d_name[0]) == '.'){
         } else{
             string palavra;
-            cout << rd->d_name << endl;
             while(myFile >> palavra){
                 string palavra_normalizada = Normalizar(palavra);
                 Inserir(palavra_normalizada, rd->d_name);
@@ -36,9 +35,80 @@ void indice_invertido::Preencher(){
     closedir(d);
 }
 
-void indice_invertido::Procurar(string palavra){
-
+bool indice_invertido::Pertence(string palavra){
+    int contador = 0;
+    for(auto it = indiceInvertido_.begin(); it != indiceInvertido_.end(); it++){
+        if(it->first == palavra){
+            contador++;
+        }
+    }
+    if(contador == 0){
+        return false;
+    } else{
+        return true;
+    }
 }
+
+map<string, map<int , int>> indice_invertido::Procurar(string palavra){
+    map<string, map<int , int>> busca_documento;
+    
+    if(Pertence(palavra)){
+        for (auto it = indiceInvertido_.begin(); it != indiceInvertido_.end(); it++) {
+            if(it->first == palavra){
+                for (auto innerIt = it->second.begin(); innerIt != it->second.end(); innerIt++) {
+
+                    busca_documento[innerIt->first][innerIt->second]++;
+                    
+                }
+            }
+        } 
+
+    } else{
+        cout << "A palavra" << palavra << "não pertence a nenhum documento";
+    }
+
+    
+     for (auto it = busca_documento.begin(); it != busca_documento.end(); it++) {
+         cout << it->first << " ";
+
+         //Loop no mapa interno
+         for (auto innerIt = it->second.begin(); innerIt != it->second.end(); innerIt++) {
+            cout << innerIt->first << " " << innerIt->second << endl;
+        }
+    }
+    return busca_documento;
+}
+
+
+// void indice_invertido::Ordenacao(map<string, map<int, int>> busca_documento){
+
+//     map<string, map<int , int>> busca_agrupada;
+
+//     int contador_hits = 0;
+//     int contador_documento = 0;
+
+//     for (auto it = busca_documento.begin(); it != busca_documento.end(); it++) {
+
+//         for (auto innerIt = it->second.begin(); innerIt != it->second.end(); innerIt++) {
+//             contador_hits += innerIt->first;
+//             contador_documento += innerIt->second;
+
+//         }
+
+//         busca_agrupada[it->first][contador_hits] = contador_documento;
+            
+//     }
+
+//     for (auto it = busca_agrupada.begin(); it != busca_agrupada.end(); it++) {
+//         cout << it->first << " ";
+
+//         // Loop no mapa interno
+//         for (auto innerIt = it->second.begin(); innerIt != it->second.end(); innerIt++) {
+//             cout << innerIt->first << " " << innerIt->second << endl;
+//         }
+//     }
+// }
+
 
 void indice_invertido::Imprimir(){
     for (auto it = indiceInvertido_.begin(); it != indiceInvertido_.end(); it++) {

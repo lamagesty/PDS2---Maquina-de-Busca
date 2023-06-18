@@ -12,7 +12,13 @@ class indice_invertido{
 
         void Inserir(string palavra, string documento);
 
-        void Procurar(string palavra);
+        map<string, map<int , int>> Procurar(string palavra);
+
+        set<string> documentos(string palavra);
+
+        bool Pertence(string palavra);
+
+        void Ordenacao(map<string, map<int, int>>);
 
         void Excluir();
 
