@@ -115,8 +115,6 @@ void indice_invertido::ImprimirDoc(int contador_palavras){
             cout << it->first << " ";
             cout << "Valor (primeiro elemento do pair): " << it->second.first;
             cout << " Valor (segundo elemento do pair): " << it->second.second << endl;
-        } else{
-
         }
     }
 }
