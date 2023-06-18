@@ -9,6 +9,7 @@
 
 using namespace std;
 
+//teste 
 void indice_invertido::Inserir(string palavra, string documento){
     indiceInvertido_[palavra][documento]++;
 }
