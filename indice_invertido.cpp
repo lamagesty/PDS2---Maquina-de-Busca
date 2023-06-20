@@ -6,6 +6,7 @@
 #include <dirent.h>
 #include <sys/types.h>
 #include <fstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -109,15 +110,29 @@ void indice_invertido::Imprimir(){
     }
 }
 
+
+bool comparaHits(const std::pair<std::string, std::pair<int, int>>& a, const std::pair<std::string, std::pair<int, int>>& b) {
+    return a.second.first > b.second.first;
+}
+
 void indice_invertido::ImprimirDoc(int contador_palavras){
-    for (auto it = documentos_.begin(); it != documentos_.end(); it++) {
+    
+
+    // Cria um vetor com os pares de chave-valor do map
+    std::vector<std::pair<std::string, std::pair<int, int>>> vetor(documentos_.begin(), documentos_.end());
+
+    // Ordena o vetor usando a função de comparação personalizada
+    std::sort(vetor.begin(), vetor.end(), comparaHits);
+
+    for (auto it = vetor.begin(); it != vetor.end(); it++) {
         if(contador_palavras == it->second.second){
-            cout << it->first << " ";
-            cout << "Valor (primeiro elemento do pair): " << it->second.first;
-            cout << " Valor (segundo elemento do pair): " << it->second.second << endl;
+            cout << it->first << endl;
+            //cout << "Valor (primeiro elemento do pair): " << it->second.first;
+            //cout << " Valor (segundo elemento do pair): " << it->second.second << endl;
         }
     }
 }
+
 
 void indice_invertido::Excluir(){
     indiceInvertido_.clear();
