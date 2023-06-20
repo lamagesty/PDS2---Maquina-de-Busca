@@ -14,19 +14,13 @@ class indice_invertido{
 
        void Procurar(string palavra);
 
-        set<string> documentos(string palavra);
-
         bool Pertence(string palavra);
-
-        void Ordenacao(map<string, map<int, int>>);
 
         void Excluir();
 
         void ExcluirDoc();
 
-        void Imprimir();
-
-        void ImprimirDoc(int contador_palavras);
+        void Imprimir(int contador_palavras);
 
         string Normalizar(string palavra);
 

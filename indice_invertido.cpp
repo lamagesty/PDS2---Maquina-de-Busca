@@ -69,23 +69,11 @@ void indice_invertido::Procurar(string palavra){
 }
 
 
-void indice_invertido::Imprimir(){
-    for (auto it = indiceInvertido_.begin(); it != indiceInvertido_.end(); it++) {
-        cout << it->first << " ";
-
-        // Loop no mapa interno
-        for (auto innerIt = it->second.begin(); innerIt != it->second.end(); innerIt++) {
-            cout << innerIt->first << " " << innerIt->second << endl;
-        }
-    }
-}
-
-
 bool comparaHits(const std::pair<std::string, std::pair<int, int>>& a, const std::pair<std::string, std::pair<int, int>>& b) {
     return a.second.first > b.second.first;
 }
 
-void indice_invertido::ImprimirDoc(int contador_palavras){
+void indice_invertido::Imprimir(int contador_palavras){
     
 
     // Cria um vetor com os pares de chave-valor do map

@@ -6,9 +6,9 @@ using namespace std;
 
 
 int main(){
-    indice_invertido Dicionario;
-    Dicionario.Excluir();
-    Dicionario.Preencher();
+    indice_invertido MaquinaDeBusca;
+    MaquinaDeBusca.Excluir();
+    MaquinaDeBusca.Preencher();
     string palavra;
     map<string, map<int , int>> documentos;
 
@@ -23,11 +23,11 @@ int main(){
         // Lê palavra por palavra da linha atual
         while (ss >> palavra) {
             contador_palavras++;
-            Dicionario.Procurar(palavra);
+            MaquinaDeBusca.Procurar(palavra);
         }
         
-        Dicionario.ImprimirDoc(contador_palavras);
-        Dicionario.ExcluirDoc(); 
+        MaquinaDeBusca.Imprimir(contador_palavras);
+        MaquinaDeBusca.ExcluirDoc(); 
     }
 
 }
