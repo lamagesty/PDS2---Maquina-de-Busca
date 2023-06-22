@@ -22,10 +22,19 @@ int main(){
         // Lê palavra por palavra da linha atual
         while (ss >> palavra) {
             contador_palavras++;
-            MaquinaDeBusca.Procurar(palavra);
+            try{
+                MaquinaDeBusca.Procurar(palavra);
+            } catch(PalavraInexistente e){
+                cout << "A palavra " << e.palavra << " não está presente em nenhum documento." << endl;
+            }
         }
         
-        MaquinaDeBusca.Imprimir(contador_palavras);
+        try{
+            MaquinaDeBusca.Imprimir(contador_palavras);
+        } catch(ConsultaSemCorrespondencia e){
+             cout << "Não existem documentos com todas as palavras consultadas." << endl;
+        }
+        
         MaquinaDeBusca.ExcluirDoc(); 
     }
 

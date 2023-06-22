@@ -6,6 +6,13 @@
 
 using namespace std;
 
+struct PalavraInexistente{
+    string palavra;
+};
+
+struct ConsultaSemCorrespondencia{
+};
+
 class indice_invertido{
     public:
 

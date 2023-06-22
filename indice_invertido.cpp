@@ -64,7 +64,9 @@ void indice_invertido::Procurar(string palavra){
         } 
 
     } else{
-        cout << "A palavra " << palavra << " não pertence a nenhum documento" << endl;
+        PalavraInexistente e;
+        e.palavra = palavra;
+        throw e;
     } 
 }
 
@@ -74,6 +76,7 @@ bool comparaHits(const pair<string, pair<int, int>>& a, const pair<string, pair<
 }
 
 void indice_invertido::Imprimir(int contador_palavras){
+    int existe_correspondencia = 0;
 
     vector<pair<string, pair<int, int>>> vetor(documentos_.begin(), documentos_.end());
 
@@ -81,8 +84,13 @@ void indice_invertido::Imprimir(int contador_palavras){
 
     for (auto it = vetor.begin(); it != vetor.end(); it++) {
         if(contador_palavras == it->second.second){
+            existe_correspondencia = 1;
             cout << it->first << endl;
-        }
+        }     
+    }
+    if(existe_correspondencia == 0){
+        ConsultaSemCorrespondencia e;
+        throw e;
     }
 }
 
