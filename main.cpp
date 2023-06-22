@@ -9,8 +9,7 @@ int main(){
     indice_invertido MaquinaDeBusca;
     MaquinaDeBusca.Excluir();
     MaquinaDeBusca.Preencher();
-    string palavra;
-    map<string, map<int , int>> documentos;
+    string palavra; 
 
     string linha;
 

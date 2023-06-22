@@ -68,29 +68,23 @@ void indice_invertido::Procurar(string palavra){
     } 
 }
 
-
-bool comparaHits(const std::pair<std::string, std::pair<int, int>>& a, const std::pair<std::string, std::pair<int, int>>& b) {
+//função externa
+bool comparaHits(const pair<string, pair<int, int>>& a, const pair<string, pair<int, int>>& b) {
     return a.second.first > b.second.first;
 }
 
 void indice_invertido::Imprimir(int contador_palavras){
-    
 
-    // Cria um vetor com os pares de chave-valor do map
-    std::vector<std::pair<std::string, std::pair<int, int>>> vetor(documentos_.begin(), documentos_.end());
+    vector<pair<string, pair<int, int>>> vetor(documentos_.begin(), documentos_.end());
 
-    // Ordena o vetor usando a função de comparação personalizada
-    std::sort(vetor.begin(), vetor.end(), comparaHits);
+    sort(vetor.begin(), vetor.end(), comparaHits);
 
     for (auto it = vetor.begin(); it != vetor.end(); it++) {
         if(contador_palavras == it->second.second){
             cout << it->first << endl;
-            //cout << "Valor (primeiro elemento do pair): " << it->second.first;
-            //cout << " Valor (segundo elemento do pair): " << it->second.second << endl;
         }
     }
 }
-
 
 void indice_invertido::Excluir(){
     indiceInvertido_.clear();
@@ -100,6 +94,7 @@ void indice_invertido::ExcluirDoc(){
     documentos_.clear();
 }
 
+//função externa
 bool find(vector<char> v, char c){
     for(vector<char>::iterator it = v.begin(); it != v.end(); it++){
         if((*it)==c){
@@ -108,7 +103,6 @@ bool find(vector<char> v, char c){
     }
     return false;
 }
-
 
 string indice_invertido::Normalizar(string palavra){
     ifstream Alfabeto("alfabeto.txt");
